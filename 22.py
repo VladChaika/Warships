@@ -45,19 +45,18 @@ ship_3 = pygame.Surface((72,24))
 ship_3.fill((255,255,0))
 ship_4 = pygame.Surface((96,24))
 ship_4.fill((255,255,0))
+gm = 3
+w = 25
+gh = 25
+i = 10
+j = 10
 
-# gm = 3
-# gw = 25
-# gh = 25
-# i = 10
-# j = 10
-#
-# grid = []
-# for ii in range(i):
-#     grid.append([])
-#     for jj in range(j):
-#         grid[ii].append(0)
-# Loop until the user clicks the close button.
+
+for ii in range(i):
+    grid.append([])
+    for jj in range(j):
+    grid[ii].append(0)
+#Loop until the user clicks the close button.
 done = False
 
 #-------------------------------------------------
