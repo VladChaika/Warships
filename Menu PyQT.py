@@ -11,18 +11,21 @@ class Example(QWidget):
 
 
     def initUI(self):
-        qbtn = QPushButton('Вихід', self)
-        qbtn_1 = QPushButton('Нова гра', self)
-        qbtn_2 = QPushButton('Інструкція до гри', self)
-        qbtn.clicked.connect(QCoreApplication.instance().quit)
-        qbtn_1.clicked.connect(self.warship)
-        qbtn_2.clicked.connect(self.help)
-        qbtn.resize(300,100)
-        qbtn_1.resize(300, 100)
-        qbtn_2.resize(300, 100)
-        qbtn.move(250, 320)
-        qbtn_1.move(250, 120)
-        qbtn_2.move(250, 220)
+        q= QPushButton('Вихід', self)
+        q.clicked.connect(QCoreApplication.instance().quit)
+        q.resize(300,100)
+        q.move(250, 320)
+
+        ng = QPushButton('Нова гра', self)
+        ng.clicked.connect(self.warship)
+        ng.resize(300, 100)
+        ng.move(250, 120)
+
+        hg = QPushButton('Інструкція до гри', self)
+        hg.clicked.connect(self.help)
+        hg.resize(300, 100)
+        hg.move(250, 220)
+
         self.setGeometry(280, 50, 800, 600)
         self.setWindowTitle('Меню')
         self.show()
@@ -51,12 +54,6 @@ class Example(QWidget):
             event.accept()
         else:
             event.ignore()
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
