@@ -15,8 +15,9 @@ def warships(self):
 
     grid = []
     screen = pygame.display.set_mode(SIZE)
-    pygame.display.set_caption("Kyrsovaya")
+    pygame.display.set_caption("Морський бій")
 
+    ship_n = 0
     clock = pygame.time.Clock()
 
     font = pygame.font.Font(None, 30)
@@ -134,49 +135,49 @@ def warships(self):
     ship_1_3 = Ships(8, 0)
     ship_1_4 = Ships(7, 8)
 
-    ship_2_1 = Ships(0, 3)
-    ship_2_2 = Ships(9, 5)
-    ship_2_3 = Ships(4, 8)
+    #ship_2_1 = Ships(0, 3)
+    #ship_2_2 = Ships(9, 5)
+    #ship_2_3 = Ships(4, 8)
 
-    ship_3_1 = Ships(3, 0)
-    ship_3_2 = Ships(7, 2)
+    #ship_3_1 = Ships(3, 0)
+    #ship_3_2 = Ships(7, 2)
 
-    ship_4 = Ships(3, 5)
+    #ship_4 = Ships(3, 5)
 
     #----------------------------------------
-    '''
-    ship_2_1_1 = Ships(0, 3, '1 ship.jpg')
-    ship_2_1_2 = Ships(0, 4, '1 ship.jpg')
-    ship_2_2_1 = Ships(9, 5, '1 ship.jpg')
-    ship_2_2_2 = Ships(9, 6, '1 ship.jpg')
-    ship_2_3_1 = Ships(4, 8, '1 ship.jpg')
-    ship_2_3_2 = Ships(4, 9, '1 ship.jpg')
 
-    ship_3_1_1 = Ships(3, 0, '1 ship.jpg')
-    ship_3_1_2 = Ships(3, 1, '1 ship.jpg')
-    ship_3_1_3 = Ships(3, 2, '1 ship.jpg')
-    ship_3_2_1 = Ships(7, 2, '1 ship.jpg')
-    ship_3_2_2 = Ships(8, 2, '1 ship.jpg')
-    ship_3_2_3 = Ships(9, 2, '1 ship.jpg')
+    ship_2_1_1 = Ships(0, 3)
+    ship_2_1_2 = Ships(0, 4)
+    ship_2_2_1 = Ships(9, 5)
+    ship_2_2_2 = Ships(9, 6)
+    ship_2_3_1 = Ships(4, 8)
+    ship_2_3_2 = Ships(4, 9)
+
+    ship_3_1_1 = Ships(3, 0)
+    ship_3_1_2 = Ships(3, 1)
+    ship_3_1_3 = Ships(3, 2)
+    ship_3_2_1 = Ships(7, 2)
+    ship_3_2_2 = Ships(8, 2)
+    ship_3_2_3 = Ships(9, 2)
 
 
-    ship_4_1 = Ships(3, 5, '1 ship.jpg')
-    ship_4_2 = Ships(4, 5, '1 ship.jpg')
-    ship_4_3 = Ships(5, 5, '1 ship.jpg')
-    ship_4_4 = Ships(6, 5, '1 ship.jpg')
-    '''
+    ship_4_1 = Ships(3, 5)
+    ship_4_2 = Ships(4, 5)
+    ship_4_3 = Ships(5, 5)
+    ship_4_4 = Ships(6, 5)
+
     #-------------------------------------
     going = '' # для клавиш
     list_1_1 = [ship_1_1]
     list_1_2 = [ship_1_2]
     list_1_3 = [ship_1_3]
     list_1_4 = [ship_1_4]
-    list_2_1 = [ship_2_1]
-    list_2_2 = [ship_2_2]
-    list_2_3 = [ship_2_3]
-    list_3_1 = [ship_3_1]
-    list_3_2 = [ship_3_2]
-    list_4 = [ship_4]
+    list_2_1 = [ship_2_1_1,ship_2_1_2]
+    list_2_2 = [ship_2_2_1,ship_2_2_2]
+    list_2_3 = [ship_2_3_1,ship_2_3_2]
+    list_3_1 = [ship_3_1_1,ship_3_1_2,ship_3_1_3]
+    list_3_2 = [ship_3_2_1,ship_3_2_2,ship_3_2_3]
+    list_4 = [ship_4_1,ship_4_2,ship_4_3,ship_4_4]
 
 
     '''
@@ -203,6 +204,23 @@ def warships(self):
             grid[i][j]["nagata"] = 0
         else:
             grid[i][j]["nagata"] = 1
+    ship_1 = pygame.Surface((24, 24))
+    ship_1_c = (225, 380)
+    ship_2_c = (225, 430)
+    ship_3_c = (225, 480)
+    ship_4_c = (225, 530)
+
+    squre_1_c = ((150, 125))
+    squre_2_c = (550, 100)
+
+    stroki_1 = 1
+    stolbiki_1 = 1
+    otstup = 2
+    shirina_s_otstupom_1 = (SIZE[0] + otstup) / (stolbiki_1 + 46)
+    shirina_uacheiki_1 = shirina_s_otstupom_1 - otstup
+    visota_s_otstupom_1 = (SIZE[1] + otstup) / (stroki_1 + 26)
+    visota_uacheiki_1 = visota_s_otstupom_1 - otstup
+    squre_size = 250
 
     while not done:
         for event in pygame.event.get():
@@ -211,7 +229,25 @@ def warships(self):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     i, j = event.pos
-                    change_grid_status(i, j)
+                    if (i > squre_1_c[0] and i < squre_1_c[0] + squre_size) and (
+                            j > squre_1_c[1] and j < squre_1_c[1] + squre_size):
+                        print(1)
+                        print(i, j)
+                    elif (i > squre_2_c[0] and i < squre_2_c[0] + squre_size) and (
+                            j > squre_2_c[1] and j < squre_2_c[1] + squre_size):
+                        print(2)
+                        print(i, j)
+                    else:
+                        print(3)
+                        print(i, j)
+                        if (i > ship_1_c[0] and i < ship_1_c[0] + shirina_uacheiki_1) and (
+                                j > ship_1_c[1] and j < ship_1_c[1] + visota_uacheiki_1):
+                            ship_n = 1
+                    if screen == ship_1_c:
+                        ship_1.fill((255, 255, 255))
+        for elem in range(10):
+            i = random.randint(0, 10 - 1)
+            j = random.randint(0, 10 - 1)
 
 
         screen.fill(GREEN)
@@ -308,4 +344,4 @@ def warships(self):
         pygame.display.flip()
         clock.tick(60)
     pygame.quit()
-    return
+warships
